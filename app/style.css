@@ -1,0 +1,14 @@
+.init-animation{
+    opacity: 1;
+    animation: animation-init .5s ease-in-out forwards;
+}
+
+@keyframes animation-init{
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
