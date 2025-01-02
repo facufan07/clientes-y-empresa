@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface VentaProps {
     id: number;
@@ -8,7 +8,8 @@ interface VentaProps {
         id: number;
         nombre: string;
         precio: number;
-        cantidad: number;
+        stock: number;
+        marca: string;
     }[];
     cliente:{
         id: number;
@@ -22,6 +23,31 @@ interface VentaProps {
 
 export default function Venta({id, fecha, total, productos, cliente, isDisabled, setIsDisabled}: VentaProps) {
     const [showProductos, setShowProductos] = useState<boolean>(false);
+    const [productosVenta, setProductosVenta] = useState<any[]>([]);
+
+    const handleProductos = () => {
+        let newProductos = [];
+        let idRecorridos: number[] = [];
+        for (let i = 0; i < productos.length; i++) {
+            let counter = 0;
+            if(!idRecorridos.includes(productos[i].id)){
+                for (let j = 0; j < productos.length; j++) {
+                    if(productos[i].id === productos[j].id){
+                        counter++;
+                    }
+                }
+                idRecorridos.push(productos[i].id);
+                newProductos.push({nombre: productos[i].nombre, cantidad: counter});
+            }
+        }
+        
+        return newProductos;
+    }
+
+    useEffect(() => {
+        setProductosVenta(handleProductos());
+    },[])
+
     return(
         <>
             <div className="flex justify-center flex-col w-[auto] border 
@@ -54,6 +80,17 @@ export default function Venta({id, fecha, total, productos, cliente, isDisabled,
                     >
                         {"<<Volver"}
                     </button>
+
+                    <div className="flex flex-col justify-center gap-4 h-[300px] overflow-y-auto">
+                        {productosVenta.map((producto, key) => (
+                            <div className="flex justify-center items-center gap-2" key={key}>
+                                <h1 className="text-white text-md font-semibold">
+                                    {producto.cantidad} x {producto.nombre}
+                                </h1>
+                            </div>
+                        ))}
+
+                    </div>
                 </div>
             )}
         </>
