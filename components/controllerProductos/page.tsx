@@ -28,36 +28,38 @@ export default function ControllerProductos() {
     }, [])
 
     return(
-        <div>
-            <div>
-                <div className="flex justify-center">
-                    <button 
-                    className={`${pestaña === "Productos" ? "bg-slate-800" : "bg-transparent"} 
-                            text-white text-2xl font-semibold text-center py-5 w-full
-                            transition-all duration-300 hover:bg-slate-800`}
-                    onClick={()=>{setPestaña("Productos")}}
-                    >
-                        Productos
-                    </button>
-                    <button
-                    className={`${pestaña === "Poco stock" ? "bg-slate-800" : "bg-transparent"} 
-                            text-white text-2xl font-semibold text-center py-5 w-full
-                            transition-all duration-300 hover:bg-slate-800`}
-                    onClick={()=>{setPestaña("Poco stock")}}
-                    >
-                        Productos poco stock
-                    </button>
-                </div>
-                <div className="overflow-y-auto w-full h-full">
-                    {pestaña === "Productos" &&(
-                        loading ? (
-                            <div>
-                                <h1 className="text-white text-2xl pl-4 pt-4 font-semibold">
-                                    {"Cargando los productos (Puede demorar)..."}
-                                </h1>
-                            </div>
-                        ):(
-                            <div className="w-full flex flex-wrap gap-4 px-5 py-5 justify-center">
+        <>
+            
+            <div className="flex justify-center h-[10dvh]">
+                <button 
+                className={`${pestaña === "Productos" ? "bg-slate-800" : "bg-transparent"} 
+                        text-white text-2xl font-semibold text-center py-5 w-full
+                        transition-all duration-300 hover:bg-slate-800`}
+                onClick={()=>{setPestaña("Productos")}}
+                >
+                    Productos
+                </button>
+                <button
+                className={`${pestaña === "Poco stock" ? "bg-slate-800" : "bg-transparent"} 
+                        text-white text-2xl font-semibold text-center py-5 w-full
+                        transition-all duration-300 hover:bg-slate-800`}
+                onClick={()=>{setPestaña("Poco stock")}}
+                >
+                    Productos poco stock
+                </button>
+            </div>
+            <div className="w-full h-[90dvh]">
+                {pestaña === "Productos" &&(
+                    loading ? (
+                        <div>
+                            <h1 className="text-white text-2xl pl-4 pt-4 font-semibold">
+                                {"Cargando los productos (Puede demorar)..."}
+                            </h1>
+                        </div>
+                    ):(
+                        <>
+                            <div className="w-full flex flex-wrap gap-4 px-5 py-5 justify-center h-[90dvh]
+                                            overflow-y-auto">
                                 {productos.length === 0 ?(
                                     <h1 className="text-white text-2xl pt-4 font-semibold">
                                         No hay productos aun
@@ -70,44 +72,50 @@ export default function ControllerProductos() {
                                         precio={producto.precio}
                                         nombre={producto.nombre}
                                         marca={producto.marca}
+                                        id={producto.id}
                                         />
                                     ))
                                 )}
                             </div>
-                        )
-                    )}
+                        </>
+                    )
+                )}
 
-                    {pestaña === "Poco stock" &&(
-                        loading2 ? (
-                            <div>
-                                <h1 className="text-white text-2xl pl-4 pt-4 font-semibold">
-                                    {"Cargando los productos (Puede demorar)..."}
+                {pestaña === "Poco stock" &&(
+                    loading2 ? (
+                        <div>
+                            <h1 className="text-white text-2xl pl-4 pt-4 font-semibold">
+                                {"Cargando los productos (Puede demorar)..."}
+                            </h1>
+                        </div>
+                    ):(
+                        <div className="w-full flex flex-wrap gap-4 px-5 py-5 justify-center">
+
+                            {productos2.length === 0 ?(
+                                <h1 className="text-white text-2xl pt-4 font-semibold">
+                                    No hay productos con poco stock aun
                                 </h1>
-                            </div>
-                        ):(
-                            <div className="w-full flex flex-wrap gap-4 px-5 py-5 justify-center">
-
-                                {productos2.length === 0 ?(
-                                    <h1 className="text-white text-2xl pt-4 font-semibold">
-                                        No hay productos con poco stock aun
-                                    </h1>
-                                ) : (
-                                    productos2.map(producto => (
-                                        <Producto
-                                        key={producto.id}
-                                        stock={producto.stock}
-                                        precio={producto.precio}
-                                        nombre={producto.nombre}
-                                        marca={producto.marca}
-                                        />
-                                    ))
-                                )}
-                                
-                            </div>
-                        )
-                    )}
-                </div>
+                            ) : (
+                                productos2.map(producto => (
+                                    <Producto
+                                    key={producto.id}
+                                    stock={producto.stock}
+                                    precio={producto.precio}
+                                    nombre={producto.nombre}
+                                    marca={producto.marca}
+                                    id={producto.id}
+                                    />
+                                ))
+                            )}
+                            
+                        </div>
+                    )
+                )}
+                
+                
             </div>
-        </div>
+            
+            
+        </>
     )
 }

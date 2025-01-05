@@ -1,4 +1,5 @@
 "use client"
+import AddProducto from "@/components/AddProducto/page"
 import Button from "@/components/Button/page"
 import ControllerProductos from "@/components/controllerProductos/page"
 import ControllerVentas from "@/components/controllerVentas/page"
@@ -22,6 +23,8 @@ export default function Empresa() {
                 <Button pestaña={pestaña} setPestaña={setPestaña} text="Ventas"/>
                 <div className="w-full h-[1px] bg-slate-800"></div>
                 <Button pestaña={pestaña} setPestaña={setPestaña} text="Productos"/>
+                <div className="w-full h-[1px] bg-slate-800"></div>
+                <Button pestaña={pestaña} setPestaña={setPestaña} text="Crear"/>
                 <Link href="/">
                     <button className="text-white text-3xl font-semibold text-center py-5 w-full 
                                     hover:bg-slate-800 transition-all duration-300 bg-green-600">
@@ -39,6 +42,10 @@ export default function Empresa() {
 
                 {pestaña === "Ventas" &&(
                     <ControllerVentas/>
+                )}
+
+                {pestaña === "Crear" &&(
+                    <AddProducto/>
                 )}
             </section>
         </main>

@@ -13,16 +13,19 @@ export default function AddCliente({setAddCliente} : AddClienteProps){
     const [apellido, setApellido] = useState<string>("")
     const [dni, setDni] = useState<string>("")
 
+    const [isClicked, setIsClicked] = useState<boolean>(false)
+
     const capitalizeFirstLetter = (str: string) => {
         return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
     };
 
     function handleSubmit() {
+        setIsClicked(true);
         axios.post("http://localhost:8080/clientes/crear", {nombre: capitalizeFirstLetter(nombre), 
             apellido: capitalizeFirstLetter(apellido), 
             dni: dni})
         .then(_ => {window.location.reload()})
-        .catch(err => console.log(err))
+        .catch(_ => alert("hubo un error al crear el cliente"))
         
     }
         
@@ -74,6 +77,7 @@ export default function AddCliente({setAddCliente} : AddClienteProps){
                     type="submit" 
                     className="text-white font-semibold bg-green-900 px-3 py-2 rounded-md 
                                     hover:bg-black transition-all duration-300 w-[90px]"
+                    disabled={isClicked}
                     >
                         Crear
                     </button>

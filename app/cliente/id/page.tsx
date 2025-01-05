@@ -32,6 +32,7 @@ export default function Id() {
     const [productos, setProductos] = useState<producto[]>([]);
     const [enviarProductos, setEnviarProductos] = useState<productoEnvio[]>([]);
     const [isEnviable, setIsEnviable] = useState<boolean>(false);
+    const [isClicked, setIsClicked] = useState<boolean>(false);
     const param = useSearchParams();
     const id = param.get("id");
 
@@ -50,6 +51,7 @@ export default function Id() {
     }, [])
 
     function handleSubmit(){
+        setIsClicked(true);
         if(isEnviable){
             axios.post(`http://localhost:8080/ventas/crear`, {cliente: {id: id}, productos: enviarProductos})
             .then(_ => {window.location.reload()})
@@ -120,6 +122,7 @@ export default function Id() {
                 className="text-white text-3xl font-semibold text-center py-5 w-full 
                         bg-green-600 hover:bg-transparent transition-all duration-300"
                 onClick={handleSubmit}
+                disabled={isClicked}
                 >
                     Realizar compra
                 </button>
