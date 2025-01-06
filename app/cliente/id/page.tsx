@@ -1,7 +1,7 @@
 "use client"
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState, Suspense } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import ProductBuy from "@/components/ProductBuy/page";
 import Alerta from "@/components/Alerta/page";
