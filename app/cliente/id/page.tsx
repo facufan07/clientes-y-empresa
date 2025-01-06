@@ -54,7 +54,7 @@ export default function Id() {
         setIsClicked(true);
         if(isEnviable){
             axios.post(`http://localhost:8080/ventas/crear`, {cliente: {id: id}, productos: enviarProductos})
-            .then(_ => {window.location.reload()})
+            .then(() => {window.location.reload()})
             .catch(err => console.log(err))
         }else{
             setAnimation(true)

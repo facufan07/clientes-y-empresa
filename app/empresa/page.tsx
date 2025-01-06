@@ -6,14 +6,6 @@ import ControllerVentas from "@/components/controllerVentas/page"
 import Link from "next/link"
 import { useState } from "react"
 
-interface producto{
-    id: number
-    nombre: string
-    marca: string
-    precio: number
-    stock: number
-}
-
 export default function Empresa() {
     const [pestaña, setPestaña] = useState<string>("Productos");
 

@@ -19,8 +19,8 @@ export default function Producto({stock, precio, nombre, marca, id}: ProductoPro
             return alert("No se puede agregar 0 stock")
         }
         axios.put(`http://localhost:8080/productos/editar`, {id, stock: stock + newStock, precio, nombre, marca})
-        .then(_ => window.location.reload())
-        .catch(_ => alert("Error al agregar stock"))
+        .then(() => window.location.reload())
+        .catch(() => alert("Error al agregar stock"))
     }
 
     return(

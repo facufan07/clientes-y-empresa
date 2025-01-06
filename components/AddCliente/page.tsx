@@ -24,8 +24,8 @@ export default function AddCliente({setAddCliente} : AddClienteProps){
         axios.post("http://localhost:8080/clientes/crear", {nombre: capitalizeFirstLetter(nombre), 
             apellido: capitalizeFirstLetter(apellido), 
             dni: dni})
-        .then(_ => {window.location.reload()})
-        .catch(_ => alert("hubo un error al crear el cliente"))
+        .then(() => {window.location.reload()})
+        .catch(() => alert("hubo un error al crear el cliente"))
         
     }
         

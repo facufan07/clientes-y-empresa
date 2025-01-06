@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 interface VentaProps {
-    id: number;
     fecha: string;
     total: number;
     productos: {
@@ -21,13 +20,18 @@ interface VentaProps {
     setIsDisabled: (setIsDisabled: boolean) => void;
 }
 
-export default function Venta({id, fecha, total, productos, cliente, isDisabled, setIsDisabled}: VentaProps) {
+interface productosVenta{
+    nombre: string;
+    cantidad: number;
+}
+
+export default function Venta({fecha, total, productos, cliente, isDisabled, setIsDisabled}: VentaProps) {
     const [showProductos, setShowProductos] = useState<boolean>(false);
-    const [productosVenta, setProductosVenta] = useState<any[]>([]);
+    const [productosVenta, setProductosVenta] = useState<productosVenta[]>([]);
 
     const handleProductos = () => {
-        let newProductos = [];
-        let idRecorridos: number[] = [];
+        const newProductos: productosVenta[] = [];
+        const idRecorridos: number[] = [];
         for (let i = 0; i < productos.length; i++) {
             let counter = 0;
             if(!idRecorridos.includes(productos[i].id)){

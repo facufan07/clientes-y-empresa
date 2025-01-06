@@ -155,7 +155,6 @@ export default function ControllerVentas() {
                         </h1>:(
                             ventas.map((venta) =>(
                                 <Venta
-                                id={venta.id}
                                 fecha={venta.fecha}
                                 total={venta.total}
                                 productos={venta.productos}

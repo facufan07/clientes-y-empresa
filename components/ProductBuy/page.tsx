@@ -43,9 +43,9 @@ export default function ProductBuy({id, setProducts, products, setIsEnviable}: P
     },[cantidad])
 
     function handleEliminate(){
-        let newProducts = products.filter(product => product.id === id)
+        const newProducts = products.filter(product => product.id === id)
         newProducts.pop()
-        let oldProducts = products.filter(product => product.id !== id)
+        const oldProducts = products.filter(product => product.id !== id)
         setProducts([...oldProducts, ...newProducts])
     }
     return(

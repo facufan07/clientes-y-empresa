@@ -26,7 +26,7 @@ export default function Cliente(){
     useEffect(() => {
         axios.get<cliente[]>("http://localhost:8080/clientes")
         .then(res => {setClientes(res.data); setLoading(false)})
-        .catch(_ => setError(true))
+        .catch(() => setError(true))
     }, [])
     return(
         <main className="w-dvw h-dvh flex py-40 items-center bg-gradient-to-r from-black to-gray-900
