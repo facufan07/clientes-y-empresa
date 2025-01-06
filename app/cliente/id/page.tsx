@@ -1,12 +1,13 @@
 "use client"
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import Link from "next/link";
 import ProductBuy from "@/components/ProductBuy/page";
 import Alerta from "@/components/Alerta/page";
 import Button from "@/components/Button/page";
 
+export const dynamic = "force-dynamic";
 interface cliente {
     id: number;
     nombre: string;
@@ -25,6 +26,7 @@ interface producto {
 interface productoEnvio {
     id: number;
 }
+
 export default function Id() {
     const [cliente, setCliente] = useState<cliente>();
     const [loading, setLoading] = useState<boolean>(true);
