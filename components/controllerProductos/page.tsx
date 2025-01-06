@@ -18,11 +18,11 @@ export default function ControllerProductos() {
     const [pestaña, setPestaña] = useState<string>("Productos");
     
     useEffect(() => {
-        axios.get<producto[]>("http://localhost:8080/productos")
+        axios.get<producto[]>("https://manejo-ventas.onrender.com/productos")
         .then(res => {setProductos(res.data); setLoading(false)})
         .catch(err => console.log(err))
 
-        axios.get<producto[]>("http://localhost:8080/productos/falta_stock")
+        axios.get<producto[]>("https://manejo-ventas.onrender.com/productos/falta_stock")
         .then(res => {setProductos2(res.data); setLoading2(false)})
         .catch(err => console.log(err))
     }, [])

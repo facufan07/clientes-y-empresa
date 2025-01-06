@@ -25,7 +25,7 @@ export default function ProductBuy({id, setProducts, products, setIsEnviable}: P
     const [producto, setProducto] = useState<producto|null>(null)
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/productos/${id}`)
+        axios.get(`https://manejo-ventas.onrender.com/productos/${id}`)
         .then(res => setProducto(res.data))
         .catch(err => console.log(err))
     },[id])

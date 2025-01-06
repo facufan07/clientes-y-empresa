@@ -71,7 +71,7 @@ export default function ControllerVentas() {
     const handleResumen = () => {
         setCantidadTotalVentas("Cargando (Puede demorar)...");
         setMontoTotal("Cargando (Puede demorar)...");
-        axios.get<ResumenDia>(`http://localhost:8080/ventas/total/${dia}`)
+        axios.get<ResumenDia>(`https://manejo-ventas.onrender.com/ventas/total/${dia}`)
         .then((res) => {
             setMontoTotal(res.data.montoTotal);
             setCantidadTotalVentas(res.data.cantidadTotalVentas);

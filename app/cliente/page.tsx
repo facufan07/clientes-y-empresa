@@ -24,7 +24,7 @@ export default function Cliente(){
     }
 
     useEffect(() => {
-        axios.get<cliente[]>("http://localhost:8080/clientes")
+        axios.get<cliente[]>("https://manejo-ventas.onrender.com/clientes")
         .then(res => {setClientes(res.data); setLoading(false)})
         .catch(() => setError(true))
     }, [])

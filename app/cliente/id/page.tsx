@@ -50,11 +50,11 @@ function Id() {
     const [pestaña, setPestaña] = useState<string>("Comprar");
 
     useEffect(()=>{
-        axios.get(`http://localhost:8080/clientes/${id}`)
+        axios.get(`https://manejo-ventas.onrender.com/clientes/${id}`)
         .then(res => {setLoading(false); setCliente(res.data)})
         .catch(err => console.log(err))
 
-        axios.get(`http://localhost:8080/productos`)
+        axios.get(`https://manejo-ventas.onrender.com/productos`)
         .then(res => {setLoading2(false); setProductos(res.data)})
         .catch(err => console.log(err))
 
@@ -63,7 +63,7 @@ function Id() {
     function handleSubmit(){
         setIsClicked(true);
         if(isEnviable){
-            axios.post(`http://localhost:8080/ventas/crear`, {cliente: {id: id}, productos: enviarProductos})
+            axios.post(`https://manejo-ventas.onrender.com/ventas/crear`, {cliente: {id: id}, productos: enviarProductos})
             .then(() => {window.location.reload()})
             .catch(err => console.log(err))
         }else{
