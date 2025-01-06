@@ -1,7 +1,7 @@
 "use client"
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import Link from "next/link";
 import ProductBuy from "@/components/ProductBuy/page";
 import Alerta from "@/components/Alerta/page";
@@ -27,7 +27,15 @@ interface productoEnvio {
     id: number;
 }
 
-export default function Id() {
+export default function IdPage() {
+    return (
+        <Suspense fallback={<h1>Loading...</h1>}>
+            <Id />
+        </Suspense>
+    )
+}
+
+function Id() {
     const [cliente, setCliente] = useState<cliente>();
     const [loading, setLoading] = useState<boolean>(true);
     const [loading2, setLoading2] = useState<boolean>(true);
