@@ -22,6 +22,14 @@ interface Ventas {
     }
 }
 
+interface producto{
+    id: number;
+    nombre: string;
+    precio: number;
+    stock: number;
+    marca: string;
+}
+
 interface ResumenDia {
     montoTotal: number;
     cantidadTotalVentas: number;
@@ -41,6 +49,11 @@ interface MayorVenta {
     clienteApellido: string;
 }
 
+interface newProductos{
+    nombre: string;
+    cantidad: number;
+}
+
 export default function ControllerVentas() {
     const [pestaña, setPestaña] = useState<string>("Ventas");
     const [error, setError] = useState<boolean>(false);
@@ -51,8 +64,8 @@ export default function ControllerVentas() {
     const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
     const [dia, setDia] = useState<string>("");
-    const [montoTotal, setMontoTotal] = useState<any>(0);
-    const [cantidadTotalVentas, setCantidadTotalVentas] = useState<any>(0);
+    const [montoTotal, setMontoTotal] = useState<number | string>(0);
+    const [cantidadTotalVentas, setCantidadTotalVentas] = useState<number | string>(0);
     const [mayorVenta, setMayorVenta] = useState<MayorVenta>();
 
     const handleResumen = () => {
@@ -69,13 +82,13 @@ export default function ControllerVentas() {
         })
     }
 
-    const handleDate = (e:any) => {
+    const handleDate = (e: React.ChangeEvent<HTMLInputElement>) => {
         setDia(e.target.value);
     }
 
-    const handleProductos = (productos: any) => {
-        let newProductos = [];
-        let idRecorridos: number[] = [];
+    const handleProductos = (productos: producto[]) => {
+        const newProductos: newProductos[] = [];
+        const idRecorridos: number[] = [];
         for (let i = 0; i < productos.length; i++) {
             let counter = 0;
             if(!idRecorridos.includes(productos[i].id)){
@@ -223,7 +236,7 @@ export default function ControllerVentas() {
                                 <div className="flex flex-col items-center gap-4 
                                             border-yellow-700 border-2 rounded-md py-5 mt-5
                                             px-4 scroll h-[200px] overflow-y-auto">
-                                    {handleProductos(mayorVenta?.productos).map((producto, key) => (
+                                    {handleProductos(mayorVenta?.productos as producto[]).map((producto, key) => (
                                         <h1 
                                         className="text-white text-2xl font-semibold text-center"
                                         key={key}>

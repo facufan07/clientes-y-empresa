@@ -1,5 +1,4 @@
 import InputText from "../InputText/page";
-import InputNumber from "../InputNumber/page";
 import { useState } from "react";
 import axios from "axios";
 
