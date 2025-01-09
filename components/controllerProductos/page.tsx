@@ -18,11 +18,11 @@ export default function ControllerProductos() {
     const [pestaña, setPestaña] = useState<string>("Productos");
     
     useEffect(() => {
-        axios.get<producto[]>("https://manejo-ventas.onrender.com/productos")
+        axios.get<producto[]>("https://manejo-ventas-production.up.railway.app/productos")
         .then(res => {setProductos(res.data); setLoading(false)})
         .catch(err => console.log(err))
 
-        axios.get<producto[]>("https://manejo-ventas.onrender.com/productos/falta_stock")
+        axios.get<producto[]>("https://manejo-ventas-production.up.railway.app/productos/falta_stock")
         .then(res => {setProductos2(res.data); setLoading2(false)})
         .catch(err => console.log(err))
     }, [])

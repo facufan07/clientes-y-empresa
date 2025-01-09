@@ -18,7 +18,7 @@ export default function Producto({stock, precio, nombre, marca, id}: ProductoPro
         if(newStock === 0){
             return alert("No se puede agregar 0 stock")
         }
-        axios.put(`https://manejo-ventas.onrender.com/productos/editar`, {id, stock: stock + newStock, precio, nombre, marca})
+        axios.put(`https://manejo-ventas-production.up.railway.app/productos/editar`, {id, stock: stock + newStock, precio, nombre, marca})
         .then(() => window.location.reload())
         .catch(() => alert("Error al agregar stock"))
     }

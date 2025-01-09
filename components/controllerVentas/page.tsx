@@ -106,7 +106,7 @@ export default function ControllerVentas() {
     }
 
     useEffect(() => {
-        axios.get<Ventas[]>("https://manejo-ventas.onrender.com/ventas")
+        axios.get<Ventas[]>("https://manejo-ventas-production.up.railway.app/ventas")
         .then((res) =>{
             setVentas(res.data);
             setLoading(false);
@@ -116,7 +116,7 @@ export default function ControllerVentas() {
             setLoading(false);
         })
 
-        axios.get<MayorVenta>("https://manejo-ventas.onrender.com/ventas/mayor_venta")
+        axios.get<MayorVenta>("https://manejo-ventas-production.up.railway.app/ventas/mayor_venta")
         .then((res) => {
             setMayorVenta(res.data);
             setLoading2(false);

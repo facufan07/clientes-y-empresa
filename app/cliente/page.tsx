@@ -24,7 +24,7 @@ export default function Cliente(){
     }
 
     useEffect(() => {
-        axios.get<cliente[]>("https://manejo-ventas.onrender.com/clientes")
+        axios.get<cliente[]>("https://manejo-ventas-production.up.railway.app/clientes")
         .then(res => {setClientes(res.data); setLoading(false)})
         .catch(() => setError(true))
     }, [])

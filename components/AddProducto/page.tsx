@@ -11,7 +11,7 @@ export default function AddProducto() {
 
     const handleSubmit = () => {
         setIsClicked(true);
-        axios.post("https://manejo-ventas.onrender.com/productos/crear", {nombre, marca, precio, stock})
+        axios.post("https://manejo-ventas-production.up.railway.app/productos/crear", {nombre, marca, precio, stock})
         .then(() => {window.location.reload()})
         .catch(() => alert("hubo un error al crear el producto"))
     }

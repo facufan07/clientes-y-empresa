@@ -21,7 +21,7 @@ export default function AddCliente({setAddCliente} : AddClienteProps){
 
     function handleSubmit() {
         setIsClicked(true);
-        axios.post("https://manejo-ventas.onrender.com/clientes/crear", {nombre: capitalizeFirstLetter(nombre), 
+        axios.post("https://manejo-ventas-production.up.railway.app/clientes/crear", {nombre: capitalizeFirstLetter(nombre), 
             apellido: capitalizeFirstLetter(apellido), 
             dni: dni})
         .then(() => {window.location.reload()})

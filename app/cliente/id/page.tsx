@@ -50,11 +50,11 @@ function Id() {
     const [pestaña, setPestaña] = useState<string>("Comprar");
 
     useEffect(()=>{
-        axios.get(`https://manejo-ventas.onrender.com/clientes/${id}`)
+        axios.get(`https://manejo-ventas-production.up.railway.app/clientes/${id}`)
         .then(res => {setLoading(false); setCliente(res.data)})
         .catch(err => console.log(err))
 
-        axios.get(`https://manejo-ventas.onrender.com/productos`)
+        axios.get(`https://manejo-ventas-production.up.railway.app/productos`)
         .then(res => {setLoading2(false); setProductos(res.data)})
         .catch(err => console.log(err))
 
@@ -63,7 +63,7 @@ function Id() {
     function handleSubmit(){
         setIsClicked(true);
         if(isEnviable){
-            axios.post(`https://manejo-ventas.onrender.com/ventas/crear`, {cliente: {id: id}, productos: enviarProductos})
+            axios.post(`https://manejo-ventas-production.up.railway.app/ventas/crear`, {cliente: {id: id}, productos: enviarProductos})
             .then(() => {window.location.reload()})
             .catch(err => console.log(err))
         }else{
